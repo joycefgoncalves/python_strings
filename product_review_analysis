@@ -1,0 +1,70 @@
+#task 1
+
+reviews = [
+    "This product is really good. I'm impressed with its quality.",
+    "The performance of this product is excellent. Highly recommended!",
+    "I had a bad experience with this product. It didn't meet my expectations.",
+    "Poor quality product. Wouldn't recommend it to anyone.",
+    "The product was average. Nothing extraordinary about it."
+]
+
+keywords = ["good", "excellent", "bad", "poor", "average"]
+
+def highlight_keywords(review, keywords):
+    for keyword in keywords:
+        review = review.replace(keyword, keyword.upper())
+    return review
+
+# Highlight keywords in each review
+for review in reviews:
+    highlighted_review = highlight_keywords(review, keywords)
+    print(highlighted_review)
+
+
+#task 2
+
+positive_words = ["good", "excellent", "great", "awesome", "fantastic", "superb", "amazing"]
+negative_words = ["bad", "poor", "terrible", "horrible", "awful", "disappointing", "subpar"]
+
+def tally_sentiment(review, positive_words, negative_words):
+    positive_count = sum(1 for word in review.split() if word.lower() in positive_words)
+    negative_count = sum(1 for word in review.split() if word.lower() in negative_words)
+    return positive_count, negative_count
+
+reviews = [
+    "This product is really good. I'm impressed with its quality.",
+    "The performance of this product is excellent. Highly recommended!",
+    "I had a bad experience with this product. It didn't meet my expectations.",
+    "Poor quality product. Wouldn't recommend it to anyone.",
+    "The product was average. Nothing extraordinary about it."
+]
+
+for i, review in enumerate(reviews, 1):
+    positive_count, negative_count = tally_sentiment(review, positive_words, negative_words)
+    print(f"Review {i}: Positive words: {positive_count}, Negative words: {negative_count}")
+
+
+
+#task 3
+
+def generate_summary(review):
+    summary = review[:30]  # Take the first 30 characters of the review
+    # Check if the 31st character is a space or punctuation
+    if len(review) > 30 and review[30] not in [' ', '.', ',', '!', '?']:
+        # Find the last space before the 30th character
+        last_space_index = summary.rfind(' ')
+        if last_space_index != -1:
+            summary = summary[:last_space_index]  # Trim at the last space
+    return summary + "…"  # Append "…" to indicate summary continuation
+
+reviews = [
+    "This product is really good. I'm impressed with its quality.",
+    "The performance of this product is excellent. Highly recommended!",
+    "I had a bad experience with this product. It didn't meet my expectations.",
+    "Poor quality product. Wouldn't recommend it to anyone.",
+    "The product was average. Nothing extraordinary about it."
+]
+
+for i, review in enumerate(reviews, 1):
+    summary = generate_summary(review)
+    print(f"Review {i} Summary:", summary)

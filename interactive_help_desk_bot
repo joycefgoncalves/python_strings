@@ -1,0 +1,54 @@
+#task 1
+
+def command_parser(user_input):
+    # Predefined commands and their corresponding responses
+    commands = {
+        "help": "Sure, I can help you with that. What do you need assistance with?",
+        "issue": "I'm sorry to hear that you're experiencing an issue. Please provide more details so I can assist you better.",
+        "contact support": "You can contact our support team at support@example.com or by phone at 1-800-123-4567.",
+        # Add more predefined commands and responses as needed
+    }
+
+    # Check if the user input contains any predefined command
+    found_command = False
+    for command, response in commands.items():
+        if command in user_input.lower():
+            print(response)
+            found_command = True
+            break
+
+    if not found_command:
+        print("Sorry, I couldn't understand your request. Please try again.")
+
+# Example usage:
+user_input = input("How can I assist you? ")
+command_parser(user_input)
+
+
+#task 2
+
+def issue_categorizer(user_input):
+    # Keywords for issue categories and their corresponding categories
+    categories = {
+        "login": "Login Issues",
+        "performance": "Performance Issues",
+        "error": "Error Messages",
+        # Add more keywords and categories as needed
+    }
+
+    # Check if the user input contains the word "issue"
+    if "issue" in user_input.lower():
+        # Initialize the issue category as "Other" by default
+        issue_category = "Other"
+        # Check for keywords in the user input and update the issue category
+        for keyword, category in categories.items():
+            if keyword in user_input.lower():
+                issue_category = category
+                break
+        print("Issue category:", issue_category)
+    else:
+        print("No issue found in the user input.")
+
+# Example usage:
+user_input = input("Please describe the issue: ")
+issue_categorizer(user_input)
